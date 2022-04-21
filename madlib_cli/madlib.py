@@ -5,9 +5,9 @@ def read_template(path):
         return file.read()
 
 def parse_template(string):
-    pattern = r"{}"
-    actual_stripped =  re.sub(pattern, "{}", string)
-    actual_parts = ""
+    pattern = r"\{(\w+\s*\w+\s*\w+\s*\w+)\}"
+    actual_stripped = re.sub(pattern, "{}", string)
+    actual_parts = tuple(re.findall(pattern, string))
     return (actual_stripped, actual_parts)
 
 def merge(string, list):
